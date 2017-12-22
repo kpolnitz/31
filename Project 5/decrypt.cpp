@@ -22,10 +22,15 @@ bool decrypt(const char ciphertext[], const char crib[]);
 bool makeAMap(char message[], char cipher[], char map[], char key[], int pos);
 int findAWord(char message[], const char cipher[], char map[], int pos); //finds pos of beginning of word w/ right syntax
 bool makeTheDecryption(char cipher[],char key[]); //decrypts the ciphertext with the given key
-
+void runtest(const char ciphertext[], const char crib[]);
 
 int main()
 {
+    
+    cout.setf(ios::boolalpha); // output bools as "true"/"false"
+    
+    runtest("Hirdd ejsy zu drvtry od.\nO'z fodvtrry.\n", "my secret");
+    runtest("Hirdd ejsy zu drvtry od.\nO'z fodvtrry.\n", "shadow");
    
 }
 //convert to C strings
@@ -414,4 +419,9 @@ bool makeTheDecryption(char cipher[],char key[])
     strcpy(cipher, cipherToDecrypt);
     return true;
 }
-
+void runtest(const char ciphertext[], const char crib[])
+{
+    cout << "====== " << crib << endl;
+    bool result = decrypt(ciphertext, crib);
+    cout << "Return value: " << result << endl;
+}
